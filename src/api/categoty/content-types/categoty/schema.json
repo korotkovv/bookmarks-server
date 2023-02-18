@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoties",
+  "info": {
+    "singularName": "categoty",
+    "pluralName": "categoties",
+    "displayName": "category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isMain": {
+      "type": "boolean",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sort": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "default": 0
+    },
+    "icon": {
+      "type": "string"
+    },
+    "links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::link.link",
+      "mappedBy": "categoty"
+    },
+    "categoties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categoty.categoty",
+      "mappedBy": "categoty"
+    },
+    "categoty": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoty.categoty",
+      "inversedBy": "categoties"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "categories"
+    }
+  }
+}
